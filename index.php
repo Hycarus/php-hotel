@@ -1,14 +1,25 @@
 <?php
 include __DIR__ . '/partials/header.php';
+$filter_hotel = $hotels;
 function filter_parking($item)
 {
-    $search = $_GET['search'];
-    return $item['parking'] == $search || $search === 'all';
+    $park = $_GET['park'];
+    return $item['parking'] == $park || $park === 'all';
 }
-if (isset($_GET['search'])) {
-    $filter_hotel = array_filter($hotels, 'filter_parking');
-    // var_dump($hotels);
+if (isset($_GET['park'])) {
+    $filter_hotel = array_filter($filter_hotel, 'filter_parking');
+    // var_dump($filter_hotel);
 }
+
+function filter_vote($item)
+{
+    $vote = $_GET['vote'];
+    return $item['vote'] >= $vote || $vote === 'all';
+}
+if (isset($_GET['vote'])) {
+    $filter_hotel = array_filter($filter_hotel, 'filter_vote');
+}
+
 ?>
 
 <main class="container">
@@ -27,20 +38,23 @@ if (isset($_GET['search'])) {
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($filter_hotel as $hotel) { ?>
-                <tr>
-                    <th scope="row"><?php echo $hotel['name'] ?></th>
-                    <td><?php echo $hotel['description'] ?></td>
-                    <td><?php if ($hotel['parking']) { ?>
-                            Yes
-                        <?php } else if (!$hotel['parking']) { ?>
-                            No
-                        <?php } ?>
-                    </td>
-                    <td><?php echo $hotel['vote'] ?></td>
-                    <td><?php echo $hotel['distance_to_center'] ?></td>
-                </tr>
-            <?php } ?>
+            <?php
+            if (count($filter_hotel) > 0) {
+                foreach ($filter_hotel as $hotel) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $hotel['name'] ?></th>
+                        <td><?php echo $hotel['description'] ?></td>
+                        <td><?php if ($hotel['parking']) { ?>
+                                Yes
+                            <?php } else if (!$hotel['parking']) { ?>
+                                No
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $hotel['vote'] ?></td>
+                        <td><?php echo $hotel['distance_to_center'] ?></td>
+                    </tr>
+            <?php }
+            } ?>
         </tbody>
     </table>
 </main>

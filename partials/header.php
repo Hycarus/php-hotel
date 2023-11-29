@@ -27,10 +27,19 @@ include __DIR__ . '/../Model/db.php'
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <form class="d-flex" role="search" action="index.php" method="GET">
-                    <select class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                        <option value="all">All</option>
+                    <select class="form-control me-2" type="search" aria-label="Search" name="park">
+                        <option value="all" selected>All park</option>
                         <option value="1">Yes</option>
                         <option value="0">No</option>
+                    </select>
+                    <select class="form-control me-2" type="search" aria-label="Search" name="vote">
+                        <option value="all" selected>All vote</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
