@@ -1,5 +1,14 @@
 <?php
 include __DIR__ . '/partials/header.php';
+function filter_parking($item)
+{
+    $search = $_GET['search'];
+    return $item['parking'] == $search || $search === 'all';
+}
+if (isset($_GET['search'])) {
+    $filter_hotel = array_filter($hotels, 'filter_parking');
+    // var_dump($hotels);
+}
 ?>
 
 <main class="container">
@@ -18,13 +27,13 @@ include __DIR__ . '/partials/header.php';
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($hotels as $hotel) { ?>
+            <?php foreach ($filter_hotel as $hotel) { ?>
                 <tr>
                     <th scope="row"><?php echo $hotel['name'] ?></th>
                     <td><?php echo $hotel['description'] ?></td>
                     <td><?php if ($hotel['parking']) { ?>
                             Yes
-                        <?php } else { ?>
+                        <?php } else if (!$hotel['parking']) { ?>
                             No
                         <?php } ?>
                     </td>

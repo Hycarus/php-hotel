@@ -22,6 +22,18 @@ include __DIR__ . '/../Model/db.php'
 </head>
 
 <body>
-    <header class="container">
+    <header class="container d-flex justify-content-between ">
         <h1>Hotels</h1>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <form class="d-flex" role="search" action="index.php" method="GET">
+                    <select class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                        <option value="all">All</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
     </header>
