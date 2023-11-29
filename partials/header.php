@@ -1,3 +1,7 @@
+<?php
+include __DIR__ . '/../Model/db.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -3,7 +3,9 @@ include __DIR__ . '/partials/header.php';
 ?>
 
 <main>
-    MAIN
+    <?php
+    var_dump($hotels);
+    ?>
 </main>
 
 <?php
