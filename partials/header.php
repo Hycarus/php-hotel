@@ -23,7 +23,7 @@ include __DIR__ . '/../Model/db.php'
 
 <body>
     <header class="container d-flex justify-content-between ">
-        <h1>Hotels</h1>
+        <h1><a href="index.php">Hotels</a></h1>
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <form class="d-flex" role="search" action="index.php" method="GET">
@@ -34,7 +34,6 @@ include __DIR__ . '/../Model/db.php'
                     </select>
                     <select class="form-control me-2" type="search" aria-label="Search" name="vote">
                         <option value="all" selected>All vote</option>
-                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
