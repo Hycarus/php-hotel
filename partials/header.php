@@ -22,6 +22,6 @@ include __DIR__ . '/../Model/db.php'
 </head>
 
 <body>
-    <header>
-        HEADER
+    <header class="container">
+        <h1>Hotels</h1>
     </header>
